@@ -18,8 +18,7 @@ const authMiddleware = require('./middlewares/AuthMiddleware');
 const app = express();
 
 app.use(cors({
-    origin://['http://localhost:5173','http://localhost:5174'],
-    true,
+    origin:['http://localhost:5173','http://localhost:5174','https://frontend-jtdi.onrender.com','https://dashboard-8qf5.onrender.com'],
     methods:["GET","POST","PUT","DELETE"],
     credentials:true,
 }));
