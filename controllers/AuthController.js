@@ -14,8 +14,8 @@ module.exports.Signup = async (req, res, next) => {
     const token = jwt.sign({id:user._id},process.env.TOKEN_KEY,{expiresIn:"1d"});
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite:"lax"
+      secure: true,
+      sameSite:"None"
     });
     res
       .status(201)
@@ -47,9 +47,9 @@ module.exports.Login = async (req, res, next) => {
     }
      const token = jwt.sign({id:user._id},process.env.TOKEN_KEY,{expiresIn:"1d"});
      res.cookie("token", token, {
-       secure: false,
+       secure: true,
        httpOnly: true,
-       sameSite:"lax"
+       sameSite:"None"
      });
      res.status(200).json({ message: "User logged in successfully", status: true,user: {
       username: user.username,
@@ -65,8 +65,8 @@ module.exports.Login = async (req, res, next) => {
 module.exports.Logout = async (req,res) => {
   res.clearCookie("token", {
     httpOnly:true,
-    secure:false,
-    sameSite:"lax"
+    secure:true,
+    sameSite:"None"
   });
   res.json({status:true, message:"Logged out successfully"});
 }
